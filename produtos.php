@@ -2,13 +2,13 @@
 session_start();
 require 'conexao.php';
 
-// Verifica se o usuário está logado
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit;
 }
 
-// Processa a adição de produtos
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar_produto'])) {
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar_produto']))
     }
 }
 
-// Processa a exclusão de produtos
+
 if (isset($_GET['excluir'])) {
     $id = $_GET['excluir'];
     $stmt = $conn->prepare("DELETE FROM produtos WHERE id = ?");
@@ -38,7 +38,7 @@ if (isset($_GET['excluir'])) {
     }
 }
 
-// Lista todos os produtos
+
 $result = $conn->query("SELECT * FROM produtos");
 ?>
 <!DOCTYPE html>
@@ -50,11 +50,11 @@ $result = $conn->query("SELECT * FROM produtos");
 </head>
 <body>
     <h1>Gerenciamento de Produtos</h1>
-    <!-- Exibe mensagens de sucesso ou erro -->
+
     <?php if (!empty($mensagem)) echo "<p style='color:green;'>$mensagem</p>"; ?>
     <?php if (!empty($erro)) echo "<p style='color:red;'>$erro</p>"; ?>
 
-    <!-- Formulário para adicionar produto -->
+    
     <h2>Adicionar Produto</h2>
     <form method="post">
         <input type="hidden" name="adicionar_produto" value="1">
@@ -73,7 +73,7 @@ $result = $conn->query("SELECT * FROM produtos");
         <button type="submit">Adicionar Produto</button>
     </form>
 
-    <!-- Lista de produtos -->
+    
     <h2>Produtos em Estoque</h2>
     <table border ="1">
         <thead>
