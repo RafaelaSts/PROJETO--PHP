@@ -21,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>Cadastro - Almoxarifado</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <h1>Cadastro</h1>
