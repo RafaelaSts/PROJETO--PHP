@@ -1,4 +1,4 @@
-Aqui temos um sistema básico de almoxarifado de farmácoa. 
+Aqui temos um sistema básico de almoxarifado de farmácia. 
 Ele inclui:
 Login/Logout.
 Cadastro de usuários.
