@@ -48,7 +48,7 @@ $saidas_result = $conn->query("
     <title>Controle de Saídas</title>
     <style>
         body {
-            background: url('fundo.jpg') no-repeat center center fixed;
+            background: url('fundonovo.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: Arial, sans-serif;
             display: flex;
@@ -59,7 +59,7 @@ $saidas_result = $conn->query("
         }
 
         h1 {
-            color: black;
+            color: #2385c4; /* Azulchat */
             text-align: center;
             margin-bottom: 20px;
         }
@@ -89,7 +89,7 @@ $saidas_result = $conn->query("
         }
 
         button[type="submit"] {
-            background-color: #4facfe;
+            background-color: #2385c4; /* Azulchat */
             color: #fff;
             padding: 10px;
             border: none;
@@ -100,7 +100,7 @@ $saidas_result = $conn->query("
         }
 
         button[type="submit"]:hover {
-            background-color: #00f2fe;
+            background-color: #1b6b9d; /* Tom mais escuro para hover */
         }
 
         table {
@@ -116,7 +116,7 @@ $saidas_result = $conn->query("
         }
 
         table th {
-            background-color: #4facfe;
+            background-color: #2385c4; /* Azulchat */
             color: white;
         }
 
@@ -130,7 +130,7 @@ $saidas_result = $conn->query("
         }
 
         a {
-            color: #4facfe;
+            color: #2385c4; /* Azulchat */
             text-decoration: none;
         }
 
@@ -138,6 +138,7 @@ $saidas_result = $conn->query("
             text-decoration: underline;
         }
     </style>
+
 </head>
 <body>
     <div class="container">
@@ -182,7 +183,12 @@ $saidas_result = $conn->query("
                 <?php endwhile; ?>
             </tbody>
         </table>
-        <p><a href="home.php">Voltar ao Dashboard</a></p>
+        <p>
+            <a href="home.php">
+                <button type="button" style="background-color: #2385c4; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Voltar</button>
+            </a>
+        </p>
+
     </div>
 </body>
 </html>

@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Cadastro - Almoxarifado</title>
     <style>
         body {
-            background: url('fundo.jpg') no-repeat center center fixed;
+            background: url('fundonovo.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: Arial, sans-serif;
             display: flex;
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         button[type="submit"] {
-            background-color: #4facfe;
+            background-color: #2385c4;
             color: #fff;
             padding: 10px;
             border: none;
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         button[type="submit"]:hover {
-            background-color: #00f2fe;
+            background-color: #1b6b9d;
         }
 
         p {
@@ -89,12 +89,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         a {
-            color: #4facfe;
+            color: #2385c4;
             text-decoration: none;
         }
 
         a:hover {
             text-decoration: underline;
+        }
+
+        .voltar-button {
+            background-color: #2385c4; /* Azulchat */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .voltar-button:hover {
+            background-color: #1b6b9d; /* Tom mais escuro para hover */
         }
     </style>
 </head>
@@ -108,7 +123,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="password" name="senha" placeholder="Senha" required>
             <button type="submit">Cadastrar</button>
         </form>
-        <p><a href="index.php">Voltar ao Login</a></p>
+        <p>
+            <a href="index.php"><button type="button" class="voltar-button">Voltar ao Login</button></a>
+        </p>
+
     </div>
 </body>
 </html>

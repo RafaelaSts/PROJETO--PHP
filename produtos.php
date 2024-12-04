@@ -47,224 +47,183 @@ $result = $conn->query("SELECT * FROM produtos");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Produtos</title>
-    <style>
-        body {
-            background: url('fundo.jpg') no-repeat center center fixed;
-            background-size: cover;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+        <style>
+            body {
+                background: url('fundonovo.jpg') no-repeat center center fixed;
+                background-size: cover;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                color: #333;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+                min-height: 100vh;
+            }
 
-        .container {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            width: 90%;
-            max-width: 800px;
-            margin-top: 30px;
-        }
+            .container {
+                background: rgba(0, 0, 0, 0.8);
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                width: 90%;
+                max-width: 800px;
+                margin-top: 30px;
+            }
 
-        h1, h2 {
-            color: #00f2fe;
-            text-align: center;
-        }
+            h1, h2 {
+                color: black; /* Azulchat */
+                text-align: center;
+            }
 
-        form {
-            margin-bottom: 20px;
-        }
+            form {
+                margin-bottom: 20px;
+            }
 
-        form label {
-            display: block;
-            margin-top: 10px;
-        }
+            form label {
+                display: block;
+                margin-top: 10px;
+            }
 
-        form input, form textarea, form button {
-            width: 100%;
-            margin-top: 5px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+            form input, form textarea, form button {
+                width: 100%;
+                margin-top: 5px;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+            }
 
-        form button {
-            background-color: #4facfe;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 15px;
-        }
+            form button {
+                background-color: #2385c4; /* Azulchat */
+                color: #fff;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+                margin-top: 15px;
+            }
 
-        form button:hover {
-            background-color: #00f2fe;
-        }
+            form button:hover {
+                background-color: #1b6b9d; /* Tom mais escuro para hover */
+            }
 
-        .form-container {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.9);
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 800px;
-            z-index: 100;
-            margin-top: 30px;
-            display: none;
-        }
+            .form-container {
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(255, 255, 255, 0.9); /* Fundo branco com opacidade */
+                color: #333; /* Texto padrão */
+                padding: 30px;
+                border-radius: 10px;
+                width: 90%;
+                max-width: 800px;
+                z-index: 100;
+                margin-top: 30px;
+                display: none;
+            }
 
-        .table-container {
-            width: 90%;
-            max-width: 800px;
-            padding: 30px;
-            margin-top: 150px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            margin-bottom: 30px; 
-            margin-left: auto; 
-            margin-right: auto; 
-        }
+            .table-container {
+                width: 90%;
+                max-width: 800px;
+                padding: 30px;
+                margin-top: 150px;
+                background: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                display: flex;
+                flex-direction: column;
+                align-items: center; 
+                margin-bottom: 30px; 
+                margin-left: auto; 
+                margin-right: auto; 
+            }
 
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-            background: rgba(255, 255, 255, 0.1);
-        }
+            .products-container {
+                max-height: 300px;
+                overflow-y: auto;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #fff; /* Cor de fundo branco */
+                padding: 10px;
+                width: 100%;
+            }
 
-        table th, table td {
-            padding: 10px;
-            border: 1px solid #fff;
-            text-align: left;
-        }
+            table {
+                width: 100%;
+                margin-top: 20px;
+                border-collapse: collapse;
+                background: white;
+            }
 
-        table th {
-            background: #00f2fe;
-            color: #fff;
-        }
+            table th, table td {
+                padding: 10px;
+                border: 1px solid #333;
+                text-align: left;
+            }
 
-        table tr:nth-child(even) {
-            background: rgba(255, 255, 255, 0.1);
-        }
+            table th {
+                background: #2385c4; /* Azulchat */
+                color: #fff;
+            }
 
-        table tr:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
+            table tr:nth-child(even) {
+                background: #f2f2f2;
+            }
 
-        a {
-            color: #4facfe;
-            text-decoration: none;
-        }
+            table tr:hover {
+                background: #e9e9e9;
+            }
 
-        a:hover {
-            text-decoration: underline;
-        }
+            a {
+                color: #2385c4; /* Azulchat */
+                text-decoration: none;
+            }
 
-        .message {
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
+            a:hover {
+                text-decoration: underline;
+            }
 
-        .message.success {
-            color: #4caf50;
-        }
+            .message {
+                text-align: center;
+                margin-bottom: 20px;
+                font-weight: bold;
+            }
 
-        .message.error {
-            color: #f44336;
-        }
+            .message.success {
+                color: #28a745;
+            }
 
-        .back-link {
-            margin-top: 20px;
-            display: block;
-            text-align: center;
-        }
+            .message.error {
+                color: #dc3545;
+            }
 
-        .products-container {
-            max-height: 400px; 
-            overflow-y: auto;
-            padding: 10px;
-            width: 100%;
-        }
+            .add-product-btn, .back-dashboard-btn {
+                background-color: #2385c4; /* Azulchat */
+                color: white;
+                border: none;
+                cursor: pointer;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 16px;
+                text-align: center;
+                display: block;
+                margin: 20px auto;
+            }
 
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
+            .add-product-btn:hover, .back-dashboard-btn:hover {
+                background-color: #1b6b9d; /* Tom mais escuro para hover */
+            }
 
-        .button-container button {
-            padding: 10px 20px;
-            margin: 10px;
-            border-radius: 5px;
-            border: none;
-            background-color: #4facfe;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-        }
+            #pesquisar {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+            }
+        </style>
 
-        .button-container button:hover {
-            background-color: #00f2fe;
-        }
-
-        .button-container .cancel-button {
-            background-color: #f44336;
-        }
-
-        .button-container .cancel-button:hover {
-            background-color: #ff5722;
-        }
-
-        .add-product-btn {
-            margin-top: 20px;
-            display: block;
-            text-align: center;
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: none;
-            background-color: #00f2fe;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .add-product-btn:hover {
-            background-color: #4facfe;
-        }
-
-        .back-dashboard-btn {
-            margin-top: 20px;
-            display: block;
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: none;
-            background-color: #f44336;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-            margin-left: auto;
-            margin-right: auto;
-            width: 200px; 
-        }
-
-        .back-dashboard-btn:hover {
-            background-color: #ff5722;
-        }
-
-    </style>
 </head>
 <body>
     <div class="table-container">
@@ -274,11 +233,17 @@ $result = $conn->query("SELECT * FROM produtos");
         <?php if (!empty($mensagem)) echo "<p class='message success'>$mensagem</p>"; ?>
         <?php if (!empty($erro)) echo "<p class='message error'>$erro</p>"; ?>
 
-        <!-- Botão para adicionar novo produto -->
-        <button class="add-product-btn" onclick="mostrarFormulario()">Adicionar Novo Produto</button>
+        <!-- Barra de pesquisa -->
+        <div>
+            <label for="pesquisar">Pesquisar Produtos:</label>
+            <input type="text" id="pesquisar" oninput="filtrarProdutos()" placeholder="Digite para pesquisar um produto">
+        </div>
+
+        <!-- Botão para mostrar o formulário de adicionar produto -->
+        <button class="add-product-btn" onclick="mostrarFormulario()">Adicionar Produto</button>
 
         <!-- Lista de produtos -->
-        <div class="products-container">
+        <div class="products-container" id="productsContainer" style="display: block;">
             <table>
                 <thead>
                     <tr>
@@ -325,15 +290,12 @@ $result = $conn->query("SELECT * FROM produtos");
             <label for="preco">Preço (R$):</label>
             <input type="number" id="preco" name="preco" step="0.01" required>
 
-            <div class="button-container">
-                <button type="submit">Adicionar Produto</button>
-                <button type="button" class="cancel-button" onclick="cancelarFormulario()">Cancelar</button>
-            </div>
+            <button type="submit">Adicionar Produto</button>
+            <button type="button" onclick="cancelarFormulario()">Cancelar</button>
         </form>
     </div>
 
-    <!-- Botão para voltar ao dashboard -->
-    <button class="back-dashboard-btn" onclick="window.location.href = 'home.php';">Voltar</button>
+    <button class="back-dashboard-btn" onclick="window.location.href='home.php'">Voltar</button>
 
     <script>
         function mostrarFormulario() {
@@ -342,6 +304,27 @@ $result = $conn->query("SELECT * FROM produtos");
 
         function cancelarFormulario() {
             document.getElementById('formContainer').style.display = 'none';
+        }
+
+        function filtrarProdutos() {
+            const input = document.getElementById('pesquisar');
+            const filter = input.value.toLowerCase();
+            const table = document.querySelector('.products-container table');
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < rows.length; i++) { // Começa em 1 para ignorar o cabeçalho
+                const cells = rows[i].getElementsByTagName('td');
+                let match = false;
+
+                for (let j = 0; j < cells.length; j++) {
+                    if (cells[j].textContent.toLowerCase().includes(filter)) {
+                        match = true;
+                        break;
+                    }
+                }
+
+                rows[i].style.display = match ? '' : 'none';
+            }
         }
     </script>
 </body>
